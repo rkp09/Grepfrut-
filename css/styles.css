@@ -1,0 +1,42 @@
+/* import hompage_styles  */
+@import url(./hompage_styles.css);
+
+@font-face {
+  font-family: "Raleway Medium";
+  src: url(../Raleway/static/Raleway-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Raleway Regular";
+  src: url(../Raleway/static/Raleway-Regular.ttf);
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: inherit;
+  padding: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Raleway Regular", Georgia, "Times New Roman", Times, serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #767676;
+  text-shadow: 1px 0 #fff;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
