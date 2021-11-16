@@ -1,6 +1,9 @@
 /* import hompage_styles  */
 @import url(./hompage_styles.css);
 
+/* import nav  */
+@import url(./nav.css);
+
 @font-face {
   font-family: "Raleway Medium";
   src: url(../Raleway/static/Raleway-Medium.ttf);
@@ -20,9 +23,9 @@ html {
 *,
 *::before,
 *::after {
-  margin: inherit;
-  padding: inherit;
-  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -30,7 +33,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   color: #767676;
-  text-shadow: 1px 0 #fff;
+  /* text-shadow: 1px 0 #fff; */
 }
 
 li {
