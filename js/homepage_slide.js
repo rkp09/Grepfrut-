@@ -170,15 +170,39 @@ hpgf_slider_items_array[0].classList.add("active_slide");
 
 let counter = 0;
 function move_to_slide() {
+  const sliderLength = hpgf_slider_items_array.length - 1;
   hpgf_slider_items.style.transform =
     "translate3d(-" + widthOfTheSliderContainer * counter + "px, 0, 0)";
   hpgf_slider_items.style.transition = "transform .6s linear";
-  if (counter > 4) {
+
+  if (counter > sliderLength) {
     counter = 0;
     hpgf_slider_items.style.transform =
       "translate3d(" + widthOfTheSliderContainer * counter + "px, 0, 0)";
     hpgf_slider_items.style.transition = "transform .6s linear";
   }
+
+  /**
+   * variables for adding class to the current active slide;
+   */
+  let previousElement = hpgf_slider_items_array[counter].previousElementSibling;
+  let currentElement = hpgf_slider_items_array[counter];
+  const lastElement = hpgf_slider_items_array[sliderLength];
+  switch (counter) {
+    case 0:
+      if (lastElement.classList.contains("active_slide")) {
+        lastElement.classList.remove("active_slide");
+        currentElement.classList.add("active_slide");
+      }
+      break;
+    default:
+      previousElement.classList.remove("active_slide");
+      currentElement.classList.add("active_slide");
+  }
+  /**
+   * changeColor function from  bottom  to change the color;
+   */
+  changeTabColor(counter);
   counter++;
 }
 
@@ -236,8 +260,6 @@ const hpgf_slider_tab_container = document.querySelector(
   ".hpgf_slider-container"
 );
 
-console.log(tabObjArray);
-
 // making a new ul element for wrapping slider tab items
 const createNewUl = document.createElement("ul");
 createNewUl.setAttribute("class", "hpgf_slider-tab-items");
@@ -260,3 +282,68 @@ injectToTabArray.forEach((ele) => {
 });
 
 hpgf_slider_tab_container.append(createNewUl);
+
+/***
+ * set the width of the tab slider indicator
+ */
+
+const sliderIndicators = document.querySelectorAll(
+  "section.hpgf_slider-tab-object"
+);
+const indicatorWidth = widthOfTheSliderContainer / 5;
+sliderIndicators.forEach((item) => {
+  item.style.width = indicatorWidth + "px";
+});
+
+const sliderIndicatorItemsArray = Array.from(
+  document.querySelectorAll("li.hpgf_slider-tab-item")
+);
+
+/**
+ *
+ * @param {take(index as current ) value from move_to_slide function} index
+ */
+function changeTabColor(index) {
+  const tabArrayLength = sliderIndicatorItemsArray.length - 1;
+  let previousElement =
+    sliderIndicatorItemsArray[counter].previousElementSibling;
+  let currentElement = sliderIndicatorItemsArray[counter];
+  const lastElement = sliderIndicatorItemsArray[tabArrayLength];
+  switch (index) {
+    case 0:
+      if (lastElement.classList.contains("active_indicator")) {
+        lastElement.classList.remove("active_indicator");
+        currentElement.classList.add("active_indicator");
+      } else {
+        currentElement.classList.add("active_indicator");
+      }
+
+      break;
+    default:
+      previousElement.classList.remove("active_indicator");
+      currentElement.classList.add("active_indicator");
+  }
+}
+
+/**
+ * this event is for the slider .When user click on a specific tab slider will be open which is relate to this tab;
+ */
+sliderIndicatorItemsArray.forEach((item, index) => {
+  item.addEventListener("click", (e) => {
+    if (
+      e.target.closest(".hpgf_slider-tab-item") ===
+      sliderIndicatorItemsArray[index]
+    ) {
+      counter = index;
+      sliderIndicatorItemsArray.forEach((item) => {
+        item.classList.remove("active_indicator");
+      });
+    } else {
+      return;
+    }
+  });
+});
+
+/**
+ * image slider complete ;
+ */

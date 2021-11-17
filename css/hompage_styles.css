@@ -39,5 +39,35 @@ p.hpgf_slider-paragaph {
   font-size: 0.9rem;
   line-height: 1.5rem;
   color: #a7a7a7;
-  /* text-shadow: 0px 1px 0px #000; */
+}
+
+/* homepage carousel indicator  styles  */
+
+ul.hpgf_slider-tab-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+section.hpgf_slider-tab-object {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  font-size: 14px;
+  border-radius: 3px;
+  transition: background 0.6s linear;
+  text-shadow: 0px 1px 0px #000;
+}
+.hpgf_slider-tab-item {
+  cursor: pointer;
+}
+
+.active_indicator {
+  background-color: rgb(18 17 17 / 64%);
+  border-radius: 3px;
 }
