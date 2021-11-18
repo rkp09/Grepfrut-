@@ -33,7 +33,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   color: #767676;
-  /* text-shadow: 1px 0 #fff; */
+  background-color: #f2f2f2;
 }
 
 li {

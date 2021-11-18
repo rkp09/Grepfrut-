@@ -49,6 +49,12 @@ for (let i = 0; i < experience_images.length; i++) {
 const hpgf_experience_wrapper = document.querySelector(
   "section.hpgf_experience-wrapper"
 );
+/**
+ * import widthOfTheSliderContainer responsive_width.js
+ */
+import { widthOfTheSliderContainer } from "./responsive_width.js";
+//set the width of the experience section
+hpgf_experience_wrapper.style.width = widthOfTheSliderContainer + "px";
 
 //making some require element to inject to the DOM;
 const experienceUl = document.createElement("ul");
@@ -61,9 +67,9 @@ const expereinceDomObj = experienceObjArray.map((ele) => {
   experienceLi.innerHTML = `
     <section class="hpgf_experience-obj">
         <figure class="experience_img-container">
-            <img src=${ele.img} alt=${ele.title}+"web experience" >
+            <img class="experience_img" width="120px" height="120px" src=${ele.img} alt="${ele.title} web experience" >
         </figure>
-        <section class="experience_content>
+        <section class="experience_content">
             <h2 class="experience_title">${ele.title}</h2>
             <p class="experience_paragaph">${ele.paragaph}</p>
         </section>

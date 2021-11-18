@@ -76,3 +76,59 @@ section.hpgf_slider-tab-object {
 /*
 *homepage main css all styles.
 */
+
+section.hpgf_experience-box {
+  margin-top: 2rem;
+}
+section.hpgf_experience-wrapper {
+  margin: auto;
+}
+
+h1.hpgf_experience-title {
+  font-size: 2.3rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ex_web,
+.ex_mobile {
+  color: #d95b44;
+}
+
+ul.hpgf_experience-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+section.hpgf_experience-obj {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+img.experience_img {
+  background-color: #d95b4f;
+  border-radius: 50%;
+}
+
+h2.experience_title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #646464;
+  letter-spacing: 1px;
+  line-height: 1.3rem;
+}
+
+p.experience_paragaph {
+  line-height: 1.3rem;
+}
+
+section.hpgf_middle-space {
+  height: 40px;
+}
