@@ -159,11 +159,6 @@ hpgf_slider_tab_container.append(createNewUl);
  * which is need for this carousel;
  */
 
-const gf_nav_wrapper = document.querySelector(".gf_nav-wrapper");
-const hpgf_slider_container = document.querySelector(
-  "section.hpgf_slider-container"
-);
-
 const hpgf_slider_container_all = Array.from(
   document.querySelectorAll("section.hpgf_slider-container")
 );
@@ -182,15 +177,16 @@ const slider_obj_wrapper_all = Array.from(
 
 /**
  * get the width of the nav acctual width and use it on the slide for making responsive width;
+ * this is imported from responsive_width.js
  */
-let widthOfTheSliderContainer = gf_nav_wrapper.clientWidth;
+import { widthOfTheSliderContainer } from "./responsive_width.js";
 
 /**
  *
  * @param {*this eventListener help to get the accutual width when load} slider_container
  * @param {*this eventListener help to get the accutual width when resize window} slider_wrapper
  */
-function widthChange(slider_container, slider_wrapper) {
+export function widthChange(slider_container, slider_wrapper) {
   hpgf_slider_container_all.forEach((item) => {
     item.style.width = slider_container;
   });
@@ -198,24 +194,6 @@ function widthChange(slider_container, slider_wrapper) {
     item.style.width = slider_wrapper;
   });
 }
-
-window.addEventListener("load", () => {
-  widthOfTheSliderContainer = gf_nav_wrapper.clientWidth;
-  const ulWidth = widthOfTheSliderContainer;
-  const slider_container = widthOfTheSliderContainer + "px";
-  const slider_wrapper = widthOfTheSliderContainer + "px";
-  widthChange(slider_container, slider_wrapper);
-  ulWidthValue(ulWidth);
-});
-
-window.addEventListener("resize", () => {
-  widthOfTheSliderContainer = gf_nav_wrapper.clientWidth;
-  const ulWidth = widthOfTheSliderContainer;
-  const slider_container = widthOfTheSliderContainer + "px";
-  const slider_wrapper = widthOfTheSliderContainer + "px";
-  widthChange(slider_container, slider_wrapper);
-  ulWidthValue(ulWidth);
-});
 
 /**
  * variables for the (unorder list, lists array)
@@ -227,7 +205,7 @@ const hpgfSCLength = hpgf_slider_items_array.length;
 /**
  * making unordered list responsive
  */
-function ulWidthValue(ulWidth) {
+export function ulWidthValue(ulWidth) {
   hpgf_slider_items.style.width = ulWidth * 5 + "px";
 }
 
