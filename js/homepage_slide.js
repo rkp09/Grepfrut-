@@ -81,6 +81,78 @@ injectToDomArray.forEach((item) => {
 
 slider_container.append(listItems);
 
+/**
+ * carousel bottom button which will directly inject to the DOM;
+ */
+
+/**
+ * array for the slider tab title
+ */
+const slider_text_array = [
+  "Awesome web templates",
+  "Responsive layout",
+  "Easy to customize",
+  "State of art design",
+  "Infinite modules",
+];
+
+/**
+ * array for the slider tab icons
+ */
+const slider_tab_icons = [
+  "../icons/slider-tab-icon1.png",
+  "../icons/slider-tab-icon2.png",
+  "../icons/slider-tab-icon3.png",
+  "../icons/slider-tab-icon4.png",
+  "../icons/slider-tab-icon5.png",
+];
+
+/**
+ * class for slider tab
+ */
+class Tab {
+  constructor(icon, text) {
+    this.icon = icon;
+    this.text = text;
+  }
+}
+
+const tabObjArray = [];
+for (let i = 0; i < slider_tab_icons.length; i++) {
+  const tab = new Tab(slider_tab_icons[i], slider_text_array[i]);
+  tabObjArray.push(tab);
+}
+
+/**
+ * variable of hpgf_slider-container section
+ */
+const hpgf_slider_tab_container = document.querySelector(
+  ".hpgf_slider-container"
+);
+
+// making a new ul element for wrapping slider tab items
+const createNewUl = document.createElement("ul");
+createNewUl.setAttribute("class", "hpgf_slider-tab-items");
+/**
+ * creating dom object using tabObjArray
+ */
+const injectToTabArray = tabObjArray.map((ele) => {
+  const createNewli = document.createElement("li");
+  createNewli.setAttribute("class", "hpgf_slider-tab-item");
+  createNewli.innerHTML = `<section class="hpgf_slider-tab-object">
+      <img src=${ele.icon} class="tab_icon" alt="tab icon">
+      <p class="tab_paragaph">${ele.text}</p>
+    </section>
+    `;
+  return createNewli;
+});
+
+injectToTabArray.forEach((ele) => {
+  return createNewUl.append(ele);
+});
+
+hpgf_slider_tab_container.append(createNewUl);
+
 /***
  * In the bottom all content is used for making responsive carousel ;
  * Here in the bottom  contains specified variables and function
@@ -168,6 +240,9 @@ hpgf_slider_items_array[0].classList.add("active_slide");
  * dynamic slide
  */
 
+/**
+ * variable for slider array index;
+ */
 let counter = 0;
 function move_to_slide() {
   const sliderLength = hpgf_slider_items_array.length - 1;
@@ -200,7 +275,7 @@ function move_to_slide() {
       currentElement.classList.add("active_slide");
   }
   /**
-   * changeColor function from  bottom  to change the color;
+   * changeColor function from  top  to change the color;
    */
   changeTabColor(counter);
   counter++;
@@ -210,78 +285,6 @@ setInterval(move_to_slide, 3000);
 /***
  * dynamic slide script done
  */
-
-/**
- * carousel bottom button which will directly inject to the DOM;
- */
-
-/**
- * array for the slider tab title
- */
-const slider_text_array = [
-  "Awesome web templates",
-  "Responsive layout",
-  "Easy to customize",
-  "State of art design",
-  "Infinite modules",
-];
-
-/**
- * array for the slider tab icons
- */
-const slider_tab_icons = [
-  "../icons/slider-tab-icon1.png",
-  "../icons/slider-tab-icon2.png",
-  "../icons/slider-tab-icon3.png",
-  "../icons/slider-tab-icon4.png",
-  "../icons/slider-tab-icon5.png",
-];
-
-/**
- * class for slider tab
- */
-class Tab {
-  constructor(icon, text) {
-    this.icon = icon;
-    this.text = text;
-  }
-}
-
-const tabObjArray = [];
-for (let i = 0; i < slider_tab_icons.length; i++) {
-  const tab = new Tab(slider_tab_icons[i], slider_text_array[i]);
-  tabObjArray.push(tab);
-}
-
-/**
- * variable of hpgf_slider-container section
- */
-const hpgf_slider_tab_container = document.querySelector(
-  ".hpgf_slider-container"
-);
-
-// making a new ul element for wrapping slider tab items
-const createNewUl = document.createElement("ul");
-createNewUl.setAttribute("class", "hpgf_slider-tab-items");
-/**
- * creating dom object using tabObjArray
- */
-const injectToTabArray = tabObjArray.map((ele) => {
-  const createNewli = document.createElement("li");
-  createNewli.setAttribute("class", "hpgf_slider-tab-item");
-  createNewli.innerHTML = `<section class="hpgf_slider-tab-object">
-    <img src=${ele.icon} class="tab_icon" alt="tab icon">
-    <p class="tab_paragaph">${ele.text}</p>
-  </section>
-  `;
-  return createNewli;
-});
-
-injectToTabArray.forEach((ele) => {
-  return createNewUl.append(ele);
-});
-
-hpgf_slider_tab_container.append(createNewUl);
 
 /***
  * set the width of the tab slider indicator
@@ -343,7 +346,6 @@ sliderIndicatorItemsArray.forEach((item, index) => {
     }
   });
 });
-
 /**
  * image slider complete ;
  */
