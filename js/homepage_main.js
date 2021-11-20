@@ -1,5 +1,9 @@
 /**
+ *
+ *
  *unique experiences block design and deployment.
+ *
+ *
  */
 
 //  experience images
@@ -84,3 +88,121 @@ expereinceDomObj.forEach((ele) => {
 
 // this will append all ul content into the hpgf_experience_wrapper;
 hpgf_experience_wrapper.append(experienceUl);
+
+/**
+ *
+ *
+ * feature at glance section
+ *
+ *
+ */
+
+/**
+ * feature block all images
+ */
+const featureImages = [
+  "../img/feature-1.jpg",
+  "../img/feature-2.jpg",
+  "../img/feature-3.jpg",
+  "../img/feature-4.jpg",
+  "../img/feature-5.jpg",
+  "../img/feature-6.jpg",
+];
+
+//feature block search icon
+const featureSearch = "../icons/zoom.png";
+
+/**
+ * feature block titles;
+ */
+const featureTitles = [
+  "Easy to use lorem interface",
+  "Cost effective ipsum amet",
+  "Clean layout for lorem",
+  "24x7 support on sit amet",
+  "Instant updation sit",
+  "Visually appealing dolor",
+];
+
+/**
+ * feature paragaphs
+ */
+
+const featureParagaphs = [
+  "Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum assum dolore eu feugiat nulla.",
+  "Typi non habent vero claritatem insitam usus legentis in iis qui facit eorum volutpat est legere lius quod ullamcorper legentis legunt.",
+  "Duis autem vel eum iriure dolor in congue velit hendrerit in vulputate velit esse dolore eu feugiat nulla facilisis at vero congue nihil.",
+  "Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum assum dolore eu feugiat nulla.",
+  "Typi non habent vero claritatem insitam usus legentis in iis qui facit eorum volutpat est legere lius quod ullamcorper legentis legunt.",
+  "Duis autem vel eum iriure dolor in congue velit hendrerit in vulputate velit esse dolore eu feugiat nulla facilisis at vero congue nihil.",
+];
+
+/**
+ * Feature class for making same obj structure;
+ */
+class Feature {
+  constructor(img, icon, title, paragraph) {
+    this.img = img;
+    this.icon = icon;
+    this.title = title;
+    this.paragaph = paragraph;
+  }
+}
+
+/**
+ * featueres array
+ */
+const featuresArray = [];
+/**
+ * using for loop for making instances at a time;
+ */
+
+for (let i = 0; i < featureImages.length; i++) {
+  const feature = new Feature(
+    featureImages[i],
+    featureSearch,
+    featureTitles[i],
+    featureParagaphs[i]
+  );
+  featuresArray.push(feature);
+}
+
+console.log(featuresArray);
+
+/**
+ * feature wrapper ;
+ */
+const hpgf_feature_wrapper = document.querySelector(".hpgf_feature-wrapper");
+
+//create a new ul element ;
+const newFeatureUl = document.createElement("ul");
+newFeatureUl.setAttribute("class", "hpgf_feature-items");
+const featureDomObj = featuresArray.map((ele) => {
+  const featureLi = document.createElement("li");
+  featureLi.setAttribute("class", "hpgf_feature-li");
+  featureLi.innerHTML = `
+  <section class="hpgf_feature-obj">
+    <figure class="hpgf_img-container">
+      <img class="hpgf_feature-main-img" src=${ele.img}>
+      <a href="#" class="hpgf_feature-absolute-icon-link" alt="Go to the ${ele.title}">
+      </a>
+    </figure>
+    <h4 class="hpgf_feature-title">${ele.title}</h4>
+    <p class="hpgf_feature-paragaph">${ele.paragaph}</p>
+  </section>
+  `;
+  return featureLi;
+});
+
+/**
+ * all li item will be appended to the ul element;
+ */
+featureDomObj.forEach((item) => {
+  newFeatureUl.append(item);
+});
+
+/**
+ * after append to the feature wrapper;
+ */
+
+hpgf_feature_wrapper.append(newFeatureUl);
