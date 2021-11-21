@@ -76,7 +76,9 @@ section.hpgf_slider-tab-object {
 /*
 *homepage main css all styles.
 */
-
+/**
+*hpgf experionce block all styles
+*/
 section.hpgf_experience-box {
   margin-top: 2rem;
 }
@@ -131,4 +133,112 @@ p.experience_paragaph {
 
 section.hpgf_middle-space {
   height: 40px;
+}
+
+/*
+*hpgf feature block all styles;
+*/
+.hpgf_feature-wrapper {
+  margin: 0 auto 2rem;
+}
+
+section.hpgf_title-box {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+figure.hpgf_title-icon-wrapper {
+  width: 40px;
+  background-color: #d95b4f;
+  border-radius: 50%;
+}
+
+img.title_icon {
+  display: block;
+  width: 100%;
+}
+
+h3.hpgf_feature-title {
+  display: inline-block;
+  font-size: 1.3rem;
+  color: #646464;
+}
+
+ul.hpgf_feature-items {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+}
+section.hpgf_feature-items-box {
+  position: relative;
+}
+section.hpgf_feature-items-wrapper {
+  overflow: hidden;
+}
+
+h4.hpgf_feature-title {
+  padding: 0.5rem 0;
+  font-size: 15px;
+}
+
+p.hpgf_feature-paragaph {
+  line-height: 1.3rem;
+}
+
+a.hpgf_feature-absolute-icon-link {
+  display: block;
+  position: absolute;
+  background: url(../icons/zoom.png);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  color: #646464;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: all 0s ease;
+}
+
+figure.hpgf_img-container {
+  position: relative;
+}
+
+a.hpgf_feature-absolute-icon-link:hover {
+  background-position: 0 -100px;
+}
+
+section.feature_move-left,
+section.feature_move-right {
+  width: 27px;
+  height: 27px;
+  background: transparent url(../icons/carousel_angle_indicator.png) 0 0
+    no-repeat;
+  position: absolute;
+  z-index: 10;
+  display: block;
+  border-radius: 2px;
+  top: 30%;
+  transition: all 0s ease;
+  cursor: pointer;
+}
+
+section.feature_move-left {
+  left: -12px;
+}
+
+section.feature_move-left:hover {
+  background-position: 0 -27px;
+}
+
+section.feature_move-right {
+  right: -12px;
+  background-position: -27px 0;
+}
+
+section.feature_move-right:hover {
+  background-position: -25px -27px;
 }

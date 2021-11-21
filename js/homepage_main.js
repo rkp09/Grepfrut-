@@ -109,9 +109,6 @@ const featureImages = [
   "../img/feature-6.jpg",
 ];
 
-//feature block search icon
-const featureSearch = "../icons/zoom.png";
-
 /**
  * feature block titles;
  */
@@ -141,9 +138,8 @@ const featureParagaphs = [
  * Feature class for making same obj structure;
  */
 class Feature {
-  constructor(img, icon, title, paragraph) {
+  constructor(img, title, paragraph) {
     this.img = img;
-    this.icon = icon;
     this.title = title;
     this.paragaph = paragraph;
   }
@@ -160,7 +156,6 @@ const featuresArray = [];
 for (let i = 0; i < featureImages.length; i++) {
   const feature = new Feature(
     featureImages[i],
-    featureSearch,
     featureTitles[i],
     featureParagaphs[i]
   );
@@ -173,6 +168,20 @@ console.log(featuresArray);
  * feature wrapper ;
  */
 const hpgf_feature_wrapper = document.querySelector(".hpgf_feature-wrapper");
+//feature box
+const createItemsbox = document.createElement("section");
+createItemsbox.setAttribute("class", "hpgf_feature-items-box");
+hpgf_feature_wrapper.append(createItemsbox);
+const hpgf_feature_items_box = document.querySelector(
+  ".hpgf_feature-items-box"
+);
+//feature items box nested wrapper
+const createItemsWrapper = document.createElement("section");
+createItemsWrapper.setAttribute("class", "hpgf_feature-items-wrapper");
+hpgf_feature_items_box.append(createItemsWrapper);
+const hpgf_feature_items_wrapper = document.querySelector(
+  ".hpgf_feature-items-wrapper"
+);
 
 //create a new ul element ;
 const newFeatureUl = document.createElement("ul");
@@ -205,4 +214,24 @@ featureDomObj.forEach((item) => {
  * after append to the feature wrapper;
  */
 
-hpgf_feature_wrapper.append(newFeatureUl);
+hpgf_feature_items_wrapper.append(newFeatureUl);
+
+//set the width of the feature wrapper
+hpgf_feature_wrapper.style.width = widthOfTheSliderContainer + "px";
+
+const lessThan = document.createElement("section");
+lessThan.setAttribute("class", "feature_move-left");
+hpgf_feature_items_box.prepend(lessThan);
+const greaterThan = document.createElement("section");
+greaterThan.setAttribute("class", "feature_move-right");
+hpgf_feature_items_box.append(greaterThan);
+/**
+ * selecting element for adding css styles
+ *
+ */
+const hpgf_feature_items = document.querySelector(".hpgf_feature-items");
+const hpgf_feature_li = document.querySelector(".hpgf_feature-li");
+const hpgf_feature_obj = document.querySelector(".hpgf_feature-obj");
+
+// hpgf_feature_obj.style.width = widthOfTheSliderContainer
+// creat two more section for the carousel indicator
