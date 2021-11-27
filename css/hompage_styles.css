@@ -1,3 +1,9 @@
+:root {
+  --start: 0;
+  --middle: 0;
+  --end: 0;
+}
+
 .hpgf_bg {
   background: url(../img/slider-background.jpg);
 }
@@ -168,9 +174,9 @@ h3.hpgf_feature-title {
 
 ul.hpgf_feature-items {
   display: flex;
-  gap: 20px;
   flex-direction: row;
 }
+
 section.hpgf_feature-items-box {
   position: relative;
 }
@@ -178,6 +184,10 @@ section.hpgf_feature-items-wrapper {
   overflow: hidden;
 }
 
+section.hpgf_feature-obj {
+  width: 300px;
+  margin-right: 20px;
+}
 h4.hpgf_feature-title {
   padding: 0.5rem 0;
   font-size: 15px;
@@ -228,6 +238,7 @@ section.feature_move-right {
 
 section.feature_move-left {
   left: -12px;
+  display: none;
 }
 
 section.feature_move-left:hover {
@@ -237,8 +248,9 @@ section.feature_move-left:hover {
 section.feature_move-right {
   right: -12px;
   background-position: -27px 0;
+  /* display: none; */
 }
 
 section.feature_move-right:hover {
-  background-position: -25px -27px;
+  background-position: -27px -27px;
 }

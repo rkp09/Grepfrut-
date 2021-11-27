@@ -162,8 +162,6 @@ for (let i = 0; i < featureImages.length; i++) {
   featuresArray.push(feature);
 }
 
-console.log(featuresArray);
-
 /**
  * feature wrapper ;
  */
@@ -216,22 +214,119 @@ featureDomObj.forEach((item) => {
 
 hpgf_feature_items_wrapper.append(newFeatureUl);
 
+/**
+ * feature items slider. For this I need to use a @keyframes here for dynamic animation.
+ */
+
 //set the width of the feature wrapper
 hpgf_feature_wrapper.style.width = widthOfTheSliderContainer + "px";
 
+//creating less than sign block;
 const lessThan = document.createElement("section");
 lessThan.setAttribute("class", "feature_move-left");
 hpgf_feature_items_box.prepend(lessThan);
+
+//creating greater than sign block;
 const greaterThan = document.createElement("section");
 greaterThan.setAttribute("class", "feature_move-right");
 hpgf_feature_items_box.append(greaterThan);
+
 /**
  * selecting element for adding css styles
  *
  */
-const hpgf_feature_items = document.querySelector(".hpgf_feature-items");
-const hpgf_feature_li = document.querySelector(".hpgf_feature-li");
-const hpgf_feature_obj = document.querySelector(".hpgf_feature-obj");
+const hpgf_feature_items = document.querySelector("ul.hpgf_feature-items");
+const hpgf_feature_li = document.querySelector("li.hpgf_feature-li");
+const hpgf_feature_obj = document.querySelector("section.hpgf_feature-obj");
 
-// hpgf_feature_obj.style.width = widthOfTheSliderContainer
-// creat two more section for the carousel indicator
+//list item array
+const list_item_array = Array.from(
+  document.querySelectorAll("li.hpgf_feature-li")
+);
+
+//carousel indicator button
+const left_button = document.querySelector("section.feature_move-left");
+const right_button = document.querySelector("section.feature_move-right");
+
+// retrive the width of hpgf_feature_items(ul)
+let hpgf_feature_items_width = (300 + 20) * list_item_array.length;
+console.log(hpgf_feature_items_width);
+
+//set the width of the hpgf_feature_items(ul)
+hpgf_feature_items.style.width = hpgf_feature_items_width + "px";
+
+// function for creating dynamic animation per click and append it to the last css file
+function setVal(newName, first, middle, end) {
+  //last css file
+  const lastSheet = document.styleSheets[document.styleSheets.length - 1];
+  lastSheet.insertRule(
+    `
+@-webkit-keyframes ${newName} { 
+  0% { 
+    margin-left:${first}
+  }
+  50% { 
+    margin-left:${middle}
+  }
+  100% { 
+    margin-left:${end}
+  }
+  }`,
+    lastSheet.cssRules.length
+  );
+}
+
+//counter variable to update a new value
+let feature_count = 0;
+
+// function for pass the value to the keyframe
+function move(incOrDec, val) {
+  incOrDec;
+
+  // set the new value of the hpgf_feature_items_width
+  hpgf_feature_items_width += val;
+
+  // get update value of the actual margin of hpgf_feature_items_width  when user click on the button
+  let hpgf_feature_items_margin = parseInt(
+    window.getComputedStyle(hpgf_feature_items).marginLeft
+  );
+
+  // set the margin for keyframe animation
+  let margin = feature_count * 320;
+  // value for the three different state of the animation (0%,50%,100%)
+  let marginFirst = `${hpgf_feature_items_margin + 70}px`;
+  let marginMiddle = hpgf_feature_items_margin + "px";
+  let marginEnd = margin + "px";
+
+  // animation will run when ul itself has greater value than its contianer
+  if (hpgf_feature_items_width >= widthOfTheSliderContainer + 20) {
+    setVal(`featureAni${feature_count}`, marginFirst, marginMiddle, marginEnd);
+    hpgf_feature_items.style.cssText = `animation: featureAni${feature_count} .5s linear forwards`;
+    right_button.style.display = "block";
+  }
+
+  // display of the indicator button for left and right indicator
+  if (hpgf_feature_items_width === 1920) {
+    left_button.style.display = "none";
+    right_button.style.display = "block";
+  } else if (hpgf_feature_items_width === widthOfTheSliderContainer + 20) {
+    right_button.style.display = "none";
+  } else {
+    left_button.style.display = "block";
+  }
+}
+
+/**
+ * pass the value through eventlistener
+ */
+right_button.addEventListener("click", () => {
+  move(feature_count--, -320);
+});
+
+left_button.addEventListener("click", () => {
+  move(feature_count++, 320);
+});
+
+/**
+ * end of the feature animation slider
+ */
