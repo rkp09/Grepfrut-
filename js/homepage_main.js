@@ -250,7 +250,6 @@ const right_button = document.querySelector("section.feature_move-right");
 
 // retrive the width of hpgf_feature_items(ul)
 let hpgf_feature_items_width = (300 + 20) * list_item_array.length;
-console.log(hpgf_feature_items_width);
 
 //set the width of the hpgf_feature_items(ul)
 hpgf_feature_items.style.width = hpgf_feature_items_width + "px";

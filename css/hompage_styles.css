@@ -145,7 +145,7 @@ section.hpgf_middle-space {
 *hpgf feature block all styles;
 */
 .hpgf_feature-wrapper {
-  margin: 0 auto 2rem;
+  margin: 0 auto 3rem;
 }
 
 section.hpgf_title-box {
@@ -253,4 +253,54 @@ section.feature_move-right {
 
 section.feature_move-right:hover {
   background-position: -27px -27px;
+}
+
+/* hpgf service section styles */
+
+section.hpgf_service-wrapper {
+  width: 940px;
+  margin: 0 auto;
+}
+
+h3.hpgf_service-title {
+  font-size: 1.3rem;
+}
+
+section.hpgf_service-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+section.hpgf_service-content {
+  margin-top: 0.5rem;
+}
+p.service_short-description {
+  line-height: 1.2rem;
+}
+
+figure.hpgf_service-img-box {
+  margin-top: -2.5rem;
+}
+
+section.hpgf_service-content-items-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  margin-right: 2.5rem;
+}
+
+li.hpgf_service-item {
+  padding: 0.5rem 0rem;
+  background: url(../icons/list-bullet-checkmark.png) no-repeat 0 center;
+  padding-left: 20px;
+}
+a.learn_more {
+  display: block;
+  width: fit-content;
+  padding: 1rem 0;
+  color: #d95b4f;
+  font-weight: 500;
+  font-size: 1rem;
 }
